@@ -35,6 +35,27 @@ def get_db():
 
 
 def init_db():
-    """Create all tables. Call on startup."""
+    """Create all tables and ensure a default admin user for demo/POC."""
     from app.models import user, report, analysis  # noqa: F401
+    from app.models.user import User
+    from app.core.security import get_password_hash
+
+    # Create tables
     Base.metadata.create_all(bind=engine)
+
+    # Ensure a default admin user exists for demo purposes.
+    # Username: admin, Password: Password123
+    db = SessionLocal()
+    try:
+        existing = db.query(User).filter(User.username == "admin").first()
+        if not existing:
+            admin = User(
+                username="admin",
+                email="admin@example.com",
+                password_hash=get_password_hash("Password123"),
+                is_active=True,
+            )
+            db.add(admin)
+            db.commit()
+    finally:
+        db.close()
