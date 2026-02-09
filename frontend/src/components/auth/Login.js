@@ -20,7 +20,7 @@ export default function Login() {
       await login(username, password);
       navigate(from, { replace: true });
     } catch (err) {
-      setError(err.response?.data?.detail || 'Login failed');
+      setError(!err.response ? 'Cannot reach server. Please try again.' : (err.response?.data?.detail || 'Login failed'));
     } finally {
       setSubmitting(false);
     }

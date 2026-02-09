@@ -21,7 +21,7 @@ export default function Register() {
     } catch (err) {
       const detail = err.response?.data?.detail;
       if (!err.response) {
-        setError('Cannot reach server. Is the backend running at ' + (process.env.REACT_APP_API_URL || 'http://localhost:5010') + '?');
+        setError('Cannot reach server. Please try again.');
       } else if (Array.isArray(detail)) {
         setError(detail.map((e) => e.msg || JSON.stringify(e)).join('. '));
       } else {
