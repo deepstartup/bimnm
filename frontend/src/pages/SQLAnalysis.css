@@ -1,0 +1,60 @@
+.sql-page .page-desc { color: var(--text-muted); margin-bottom: 1rem; }
+
+.sql-page .card {
+  background: var(--surface-card);
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+}
+
+.sql-textarea {
+  width: 100%;
+  font-family: 'Consolas', 'Monaco', monospace;
+  font-size: 0.9rem;
+  padding: 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  resize: vertical;
+}
+
+.tabs {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.tabs button {
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--border);
+  background: var(--surface-card);
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.95rem;
+}
+
+.tabs button.active {
+  background: var(--primary);
+  color: white;
+  border-color: var(--primary);
+}
+
+.result-card h3 { margin: 0 0 1rem; font-size: 1.1rem; }
+
+.result-kpis {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.result-kpis .kpi {
+  display: flex;
+  flex-direction: column;
+  padding: 0.75rem 1rem;
+  background: var(--surface);
+  border-radius: 6px;
+  min-width: 100px;
+}
+
+.result-card ul { margin: 0.5rem 0; padding-left: 1.25rem; }

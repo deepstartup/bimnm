@@ -1,0 +1,33 @@
+# Core Framework
+fastapi==0.109.0
+uvicorn[standard]==0.27.0
+python-jose[cryptography]==3.3.0
+# Password hashing: app uses SHA256 in app.core.security (no bcrypt/passlib)
+python-multipart==0.0.6
+
+# Database
+sqlalchemy==2.0.25
+
+# Data Processing
+pandas==2.0.3
+numpy==1.24.0
+
+# PDF Generation
+reportlab==4.4.4
+
+# SQL Parsing
+sqlparse==0.5.5
+
+# AI/ML (optional - install separately if needed)
+# openai==2.14.0
+# sentence-transformers==5.1.2
+# faiss-cpu==1.13.1
+
+# Document Processing
+PyPDF2==3.0.1
+python-docx==1.2.0
+
+# Utilities
+python-dotenv==1.0.0
+pydantic==2.5.0
+pydantic-settings==2.1.0

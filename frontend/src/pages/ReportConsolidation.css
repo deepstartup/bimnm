@@ -1,0 +1,40 @@
+.consolidation-page .page-desc { color: var(--text-muted); margin-bottom: 1rem; }
+
+.consolidation-page .card {
+  background: var(--surface-card);
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+}
+
+.consolidation-page .card h3 { margin: 0 0 1rem; }
+.consolidation-page .card h4 { margin: 1rem 0 0.5rem; font-size: 0.95rem; }
+
+.cons-kpis {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.cons-kpis .kpi {
+  display: flex;
+  flex-direction: column;
+  padding: 0.75rem 1rem;
+  background: var(--surface);
+  border-radius: 6px;
+  min-width: 100px;
+}
+
+.dup-groups .dup-group {
+  margin: 1rem 0;
+  padding: 1rem;
+  background: var(--surface);
+  border-radius: 6px;
+  border-left: 4px solid var(--primary);
+}
+
+.dup-group .dup-sim { font-weight: 600; color: var(--primary); }
+.dup-group ul { margin: 0.5rem 0; padding-left: 1.25rem; }
+.dup-rec { margin: 0.5rem 0 0; font-size: 0.9rem; color: var(--text-muted); }

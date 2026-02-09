@@ -1,0 +1,110 @@
+.coe-page .page-desc {
+  color: var(--text-muted);
+  margin-bottom: 1.5rem;
+}
+
+.coe-page .card {
+  background: var(--surface-card);
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+}
+
+.coe-page .card h3 {
+  margin: 0 0 1rem;
+  font-size: 1.1rem;
+}
+
+.coe-kpis {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.coe-kpis .kpi {
+  display: flex;
+  flex-direction: column;
+  padding: 0.75rem 1rem;
+  background: var(--surface);
+  border-radius: 6px;
+  min-width: 80px;
+}
+
+.kpi-label { font-size: 0.8rem; color: var(--text-muted); }
+.kpi-value { font-size: 1.25rem; font-weight: 600; color: var(--primary); }
+
+.complexity-dist ul, .top-complex ul {
+  margin: 0;
+  padding-left: 1.25rem;
+}
+
+.complexity-dist h4, .top-complex h4, .duplicate-groups h4 {
+  margin: 1rem 0 0.5rem;
+  font-size: 0.95rem;
+}
+
+.duplicate-groups .dup-group {
+  margin: 0.5rem 0;
+  padding: 0.5rem;
+  background: var(--surface);
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+
+.dup-sim {
+  font-weight: 600;
+  color: var(--primary);
+  margin-right: 0.5rem;
+}
+
+.history-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.history-list li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.history-list li.selected {
+  background: rgba(21, 101, 192, 0.08);
+  margin: 0 -1rem;
+  padding: 0.5rem 1rem;
+}
+
+.history-list .link {
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  flex: 1;
+  color: var(--text);
+  font-size: 0.95rem;
+}
+
+.history-list .link:hover {
+  color: var(--primary);
+}
+
+.btn-small {
+  padding: 0.25rem 0.5rem;
+  font-size: 0.8rem;
+}
+
+.btn-danger {
+  background: #c62828;
+  color: white;
+}
+
+.btn-danger:hover {
+  background: #b71c1c;
+}
+
+.muted { color: var(--text-muted); font-size: 0.9rem; }
