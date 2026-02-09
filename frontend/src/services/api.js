@@ -1,12 +1,20 @@
 import axios from 'axios';
 
-// Same-origin when deployed (e.g. Vercel) so no CORS; localhost for local dev
+// API base URL resolution:
+// - If REACT_APP_API_URL is set (e.g. Vercel backend URL), always use it.
+// - Otherwise, same-origin when deployed (e.g. Vercel) so no CORS.
+// - Localhost for local dev.
 const getBaseURL = () => {
+  if (process.env.REACT_APP_API_URL && process.env.REACT_APP_API_URL.trim() !== '') {
+    return process.env.REACT_APP_API_URL;
+  }
   if (typeof window !== 'undefined') {
     const host = window.location.hostname;
-    if (host !== 'localhost' && host !== '127.0.0.1') return ''; // production: use /api on same origin
+    if (host !== 'localhost' && host !== '127.0.0.1') {
+      return ''; // production: use /api on same origin
+    }
   }
-  return process.env.REACT_APP_API_URL ?? 'http://localhost:5011';
+  return 'http://localhost:5011';
 };
 const API_URL = getBaseURL();
 
