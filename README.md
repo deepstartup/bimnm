@@ -4,7 +4,7 @@ AI-powered automation toolkit for migrating legacy Business Intelligence systems
 
 ## Stack
 
-- **Backend:** FastAPI, SQLAlchemy 2.0, SQLite, JWT (python-jose), Uvicorn — port **5010**
+- **Backend:** FastAPI, SQLAlchemy 2.0, SQLite, JWT (python-jose), Uvicorn — port **5011**
 - **Frontend:** React 18, React Router, Axios — port **8090**
 
 ## Quick start
@@ -19,21 +19,33 @@ python -m venv venv
 pip install -r requirements.txt
 cp .env.example .env
 # Edit .env if needed (SECRET_KEY, etc.)
-uvicorn app.main:app --reload --port 5010
+uvicorn app.main:app --reload --port 5011
 ```
 
-API docs: **http://localhost:5010/docs**
+API docs: **http://localhost:5011/docs**
 
 ### Frontend
 
 ```bash
 cd frontend
 npm install
-# Ensure .env has REACT_APP_API_URL=http://localhost:5010 and PORT=8090
+cp .env.example .env
+# Edit .env if needed: REACT_APP_API_URL=http://localhost:5011, PORT=8090
 npm start
 ```
 
 App: **http://localhost:8090**
+
+### Deploy full-stack on Vercel (one URL)
+
+The repo is set up so **one Vercel project** serves both the React app and the FastAPI API from the same domain.
+
+1. In [Vercel](https://vercel.com), import the repo and deploy **with Root Directory left at the repo root** (do not set it to `frontend`).
+2. Build and API are configured in root `vercel.json`:
+   - Frontend is built from `frontend/` and served as static files.
+   - All `/api/*` requests are handled by the FastAPI app (serverless) in `api/`.
+3. Set **Environment Variable** (optional): `REACT_APP_API_URL` = leave **empty** so the app uses the same origin (`/api`). Only set it if you host the API elsewhere.
+4. **Note:** The API uses SQLite in `/tmp` on Vercel; data does not persist across serverless invocations. For persistent data, add a database (e.g. Vercel Postgres) and set `DATABASE_URL`.
 
 ### First run
 
@@ -52,7 +64,7 @@ backend/
     models/          # User, Report, COEAnalysis
     schemas/         # Pydantic request/response
     api/             # auth, reports, deps (get_current_user)
-    core/            # security (JWT, bcrypt)
+    core/            # security (JWT, password hashing)
     services/        # report_service
 frontend/
   src/
@@ -80,7 +92,7 @@ frontend/
 ## Environment
 
 - **Backend:** `.env` (see `.env.example`) — `DATABASE_URL`, `SECRET_KEY`, `CORS_ORIGINS`, etc.
-- **Frontend:** `.env` — `REACT_APP_API_URL`, `PORT=8090`
+- **Frontend:** Copy `frontend/.env.example` to `frontend/.env`. Set `REACT_APP_API_URL=http://localhost:5011` and `PORT=8090` (or your backend port).
 
 ## License / repo
 

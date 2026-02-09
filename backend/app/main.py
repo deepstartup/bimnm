@@ -27,12 +27,16 @@ app = FastAPI(
 )
 
 # CORS: ensure frontend origins are always allowed (merge with env config)
-_default_origins = ["http://localhost:8090", "http://127.0.0.1:8090", "http://localhost:3000", "http://127.0.0.1:3000"]
+_default_origins = [
+    "http://localhost:8090", "http://127.0.0.1:8090",
+    "http://localhost:3000", "http://127.0.0.1:3000",
+]
+# Allow Vercel deployments (same-origin when frontend and API are on one domain)
 _cors_origins = list(dict.fromkeys(_default_origins + settings.cors_origins_list))
 
 
 def _add_cors_headers(response, origin: str):
-    if origin in _cors_origins or "localhost" in origin or "127.0.0.1" in origin:
+    if origin in _cors_origins or "localhost" in origin or "127.0.0.1" in origin or ".vercel.app" in (origin or ""):
         response.headers["Access-Control-Allow-Origin"] = origin
     response.headers["Access-Control-Allow-Credentials"] = "true"
     response.headers["Access-Control-Allow-Methods"] = "GET, POST, PUT, DELETE, OPTIONS"
@@ -52,6 +56,7 @@ app.add_middleware(AddCORSHeadersMiddleware)
 app.add_middleware(
     CORSMiddleware,
     allow_origins=_cors_origins,
+    allow_origin_regex=r"https://.*\.vercel\.app",
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

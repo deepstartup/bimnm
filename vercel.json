@@ -1,0 +1,16 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "buildCommand": "cd frontend && npm install && npm run build",
+  "outputDirectory": "frontend/build",
+  "installCommand": "cd frontend && npm install",
+  "rewrites": [
+    { "source": "/((?!api/).*)", "destination": "/index.html" }
+  ],
+  "env": {
+    "REACT_APP_API_URL": ""
+  },
+  "functions": {
+    "api/index.py": { "runtime": "python3.12" },
+    "api/[[...path]].py": { "runtime": "python3.12" }
+  }
+}
